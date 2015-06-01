@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="MiniWOTC.SiteMaster" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>eWotc</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="Content/Site.css" />
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="row">
+    <div class="leftSide col-sm-4 col-md-4 col-lg-4">
+        <div class="title">eWOTC</div>
+        <hr />
+
+        <ul class="menu">
+            <li class="menuItem"><i class="fa fa-home"></i> <a href="default.aspx">Home</a></li>
+            <li class="menuItem"><i class="fa fa-search"></i> <a href="search.aspx">Search</a></li>
+            <li class="menuItem"><i class="fa fa-th-list"></i> <a href="targetGroupview.aspx">Target Groups</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+        <form runat="server">
+          <asp:ContentPlaceHolder ID="contents" runat="server" />
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

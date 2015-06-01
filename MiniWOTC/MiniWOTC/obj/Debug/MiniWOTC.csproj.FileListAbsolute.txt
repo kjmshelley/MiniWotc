@@ -1,0 +1,60 @@
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\MiniWOTC.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\MiniWOTC.pdb
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\Antlr3.Runtime.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\AspNet.ScriptManager.jQuery.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.AspNet.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.Core.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OAuth.Consumer.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OAuth.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OpenId.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\EntityFramework.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\Microsoft.ScriptManager.MSAjax.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\Microsoft.ScriptManager.WebForms.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\Microsoft.Web.Infrastructure.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\System.Web.Optimization.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\System.Web.Providers.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\WebGrease.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\EntityFramework.xml
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.Core.xml
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OAuth.xml
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OAuth.Consumer.xml
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OpenId.xml
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.AspNet.xml
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\obj\Debug\MiniWOTC.csprojResolveAssemblyReference.cache
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\obj\Debug\MiniWOTC.dll
+c:\users\kinjiru\documents\visual studio 2012\Projects\MiniWOTC\MiniWOTC\obj\Debug\MiniWOTC.pdb
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\MiniWOTC.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\MiniWOTC.pdb
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\Antlr3.Runtime.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\AspNet.ScriptManager.jQuery.UI.Combined.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.Core.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\EntityFramework.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\Microsoft.AspNet.Membership.OpenAuth.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\Microsoft.ScriptManager.MSAjax.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\Microsoft.ScriptManager.WebForms.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\System.Web.Optimization.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\System.Web.Providers.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\WebGrease.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\EntityFramework.xml
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.Core.xml
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\obj\Debug\MiniWOTC.csprojResolveAssemblyReference.cache
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\obj\Debug\MiniWOTC.dll
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\obj\Debug\MiniWOTC.pdb

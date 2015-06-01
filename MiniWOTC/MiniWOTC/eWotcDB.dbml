@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MiniWotc" Class="eWotcDB" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLExpress;Initial Catalog=MiniWotc;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MiniWotcConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ssn" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="address" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="state" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="qualified_target_groups" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="certified_target_group" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employee_EmployeeDocument" Member="EmployeeDocuments" ThisKey="id" OtherKey="employee_id" Type="EmployeeDocument" />
+      <Association Name="TargetGroup_Employee" Member="TargetGroup" ThisKey="certified_target_group" OtherKey="id" Type="TargetGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TargetGroups" Member="TargetGroups">
+    <Type Name="TargetGroup">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="targetGroup" Member="targetGroup1" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="targetGroupCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="maxCredit" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TargetGroup_Employee" Member="Employees" ThisKey="id" OtherKey="certified_target_group" Type="Employee" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmployeeDocuments" Member="EmployeeDocuments">
+    <Type Name="EmployeeDocument">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="employee_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="document_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="received_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Employee_EmployeeDocument" Member="Employee" ThisKey="employee_id" OtherKey="id" Type="Employee" IsForeignKey="true" />
+      <Association Name="Document_EmployeeDocument" Member="Document" ThisKey="document_id" OtherKey="id" Type="Document" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Documents" Member="Documents">
+    <Type Name="Document">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="document" Member="document1" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="allowedDays" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Document_EmployeeDocument" Member="EmployeeDocuments" ThisKey="id" OtherKey="document_id" Type="EmployeeDocument" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extract>
+ <datasource>
+	<connection>Server=.\SQLExpress;Database=MiniWotc;Trusted_Connection=True;</connection>
+	<source>sp_StateExtraction</source>
+        <state_parameter>CA</state_parameter>
+	<from_date_parameter></from_date_parameter>
+	<to_date_parameter></to_date_parameter>
+ </datasource>
+ <export>
+  <file_type>.csv</file_type>
+  <file_name>CA_Extracts.csv</file_name>
+  <file>
+    <column>
+	<name>ssn</name>
+	<format>###-##-####</format>
+        <format_type>number</format_type>
+        <delimiter>,</delimiter>
+    </column>
+    <column>
+	<name>name</name>
+        <delimiter>,</delimiter>
+    </column>
+    <column>
+	<name>address</name>
+        <delimiter>,</delimiter>
+    </column>
+    <column>
+	<name>state</name>
+        <delimiter>,</delimiter>
+    </column>
+    <column>
+	<name>description</name>
+        <delimiter>,</delimiter>
+      	<conditional_format>
+          <values>
+            <value>
+              <input>Veteran</input>
+              <output>Vet</output>
+            </value>
+            <value>
+              <input>SNAP</input>
+              <output>Please validate</output>
+            </value>
+          </values>
+        </conditional_format>
+   </column>
+  </file>
+</export>
+</extract>

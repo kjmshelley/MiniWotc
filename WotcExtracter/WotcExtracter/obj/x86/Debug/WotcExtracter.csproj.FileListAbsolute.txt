@@ -1,0 +1,6 @@
+C:\Users\kinjiru\documents\visual studio 2010\Projects\WotcExtracter\WotcExtracter\bin\Debug\WotcExtracter.exe
+C:\Users\kinjiru\documents\visual studio 2010\Projects\WotcExtracter\WotcExtracter\bin\Debug\WotcExtracter.pdb
+C:\Users\kinjiru\documents\visual studio 2010\Projects\WotcExtracter\WotcExtracter\obj\x86\Debug\WotcExtracter.exe
+C:\Users\kinjiru\documents\visual studio 2010\Projects\WotcExtracter\WotcExtracter\obj\x86\Debug\WotcExtracter.pdb
+C:\Users\kinjiru\Desktop\MiniWotc\WotcExtracter\WotcExtracter\obj\x86\Debug\WotcExtracter.exe
+C:\Users\kinjiru\Desktop\MiniWotc\WotcExtracter\WotcExtracter\obj\x86\Debug\WotcExtracter.pdb
