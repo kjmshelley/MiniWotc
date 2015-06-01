@@ -1,6 +1,6 @@
 # MiniWotc
 MiniWotc is a simple program that allows maintenace of WOTC data. 
-The system is not complete. Rather is a simple example of how to
+The system is not complete. Rather it is a simple example of how to
 implement a WOTC system. There are two systems. 
 
 The first one is eWotc. This is a web base app using Webforms. 
