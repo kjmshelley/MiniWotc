@@ -21,39 +21,48 @@ namespace MiniWOTC
             }
             eWotcDB db = new eWotcDB();
             var empData = from emp in db.Employees
-                          where emp.id == id
-                          select emp;
-                         /* {
-                              emp.id,
-                              emp.ssn,
-                              emp.address,
-                              emp.name,
-                              emp.state,
-                              targetgroup = emp.TargetGroup.description
+                          where emp.ID == id
+                          select new
+                          {
+                              emp.ID,
+                              emp.SSN,
+                              emp.Address,
+                              emp.Name,
+                              emp.State,
+                              emp.City,
+                              CompanyName = emp.Location.Company.Name,
+                              LocationName = emp.Location.Name,
+                              LocationAddress = emp.Location.Address,
+                              LocationCity = emp.Location.City,
+                              LocationState = emp.Location.State,
+                              targetgroup = emp.TargetGroup.Description
+                      
                           };
             homeGridView.DataSource = empData;
             homeGridView.DataBind();
-            */
-            var recDocQuery = from emp in db.Employees
-                              where emp.id == id
-                              select emp;
-            homeGridView.DataSource = recDocQuery;
-            homeGridView.DataBind();
-            //receivedDocumentsList.DataSource = recDocQuery;
-            //receivedDocumentsList.DataBind();
+            if(empData != null) 
+                title.InnerText = "Employee View - " + empData.ToList()[0].Name;
 
-            var missingDocQuery = from emp in db.Employees
-                                  where emp.id == id
-                                  select emp;
-           // missingDocumentsList.DataSource = missingDocQuery;
-            //missingDocumentsList.DataBind();
-
-
-            var pendingDocQuery = from emp in db.Employees
-                                  where emp.id == id
-                                  select emp;
-            pendingDocumentsList.DataSource = pendingDocQuery;
+            locationGridView.DataSource = empData;
+            locationGridView.DataBind();
+            
+            var recDocQuery = from emp in db.EmployeeDocuments
+                              where emp.EmployeeId == id
+                              select new 
+                              {
+                                  DocumentName = emp.Document.Document1,
+                                  emp.ReceivedDate,
+                                  emp.Document.AllowedDays 
+                              };
+            pendingDocumentsList.DataSource = recDocQuery.Where(x => x.ReceivedDate == null);
             pendingDocumentsList.DataBind();
+
+            missingDocumentsList.DataSource = recDocQuery.Where(x => x.ReceivedDate != null &&  ((x.ReceivedDate ?? DateTime.Now) - DateTime.Now).Days > x.AllowedDays);
+            missingDocumentsList.DataBind();
+
+            receivedDocumentsList.DataSource = recDocQuery.Where(x => x.ReceivedDate != null && ((x.ReceivedDate ?? DateTime.Now) - DateTime.Now).Days < x.AllowedDays);
+            receivedDocumentsList.DataBind();
+            
         }
     }
 }

@@ -32,11 +32,12 @@
                         <td>Name</td>
                         <td>SSN</td>
                         <td>Address</td>
+                        <td>City</td>
                         <td>State</td>
                         <td>Target Group</td>
                     </tr>
                 </thead>
-                <tbody id="dataTable">
+                <tbody id="dataTable" class="table table-striped table-bordered">
 
                 </tbody>
             </table>
@@ -72,11 +73,12 @@
 
                     for (var i = 0; i < data.length; i++) {
                         var html = "<tr>";
-                        html += "<td><a href='employeeview.aspx?id=" + data[i].id + "'>" + data[i].name + "</td>";
-                        html += "<td>" + data[i].ssn + "</td>";
-                        html += "<td>" + data[i].address + "</td>";
-                        html += "<td>" + data[i].state + "</td>";
-                        html += "<td>" + data[i].targetgroup + "</td>";
+                        html += "<td><a href='employeeview.aspx?id=" + data[i].ID + "'>" + data[i].Name + "</td>";
+                        html += "<td>" + data[i].SSN + "</td>";
+                        html += "<td>" + data[i].Address + "</td>";
+                        html += "<td>" + data[i].City + "</td>";
+                        html += "<td>" + data[i].State + "</td>";
+                        html += "<td>" + data[i].TargetGroup + "</td>";
                         html += "</tr>";
 
                         $("#dataTable").append(html);

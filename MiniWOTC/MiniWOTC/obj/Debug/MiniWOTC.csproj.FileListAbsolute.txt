@@ -55,6 +55,6 @@ C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OAuth.Con
 C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OpenId.xml
 C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\bin\DotNetOpenAuth.AspNet.xml
-C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\obj\Debug\MiniWOTC.csprojResolveAssemblyReference.cache
 C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\obj\Debug\MiniWOTC.dll
 C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\obj\Debug\MiniWOTC.pdb
+C:\Users\kinjiru\Desktop\MiniWotc\MiniWOTC\MiniWOTC\obj\Debug\MiniWOTC.csprojResolveAssemblyReference.cache

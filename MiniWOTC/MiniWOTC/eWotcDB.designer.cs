@@ -30,18 +30,24 @@ namespace MiniWOTC
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertCompany(Company instance);
+    partial void UpdateCompany(Company instance);
+    partial void DeleteCompany(Company instance);
+    partial void InsertLocation(Location instance);
+    partial void UpdateLocation(Location instance);
+    partial void DeleteLocation(Location instance);
     partial void InsertEmployee(Employee instance);
     partial void UpdateEmployee(Employee instance);
     partial void DeleteEmployee(Employee instance);
-    partial void InsertTargetGroup(TargetGroup instance);
-    partial void UpdateTargetGroup(TargetGroup instance);
-    partial void DeleteTargetGroup(TargetGroup instance);
     partial void InsertEmployeeDocument(EmployeeDocument instance);
     partial void UpdateEmployeeDocument(EmployeeDocument instance);
     partial void DeleteEmployeeDocument(EmployeeDocument instance);
     partial void InsertDocument(Document instance);
     partial void UpdateDocument(Document instance);
     partial void DeleteDocument(Document instance);
+    partial void InsertTargetGroup(TargetGroup instance);
+    partial void UpdateTargetGroup(TargetGroup instance);
+    partial void DeleteTargetGroup(TargetGroup instance);
     #endregion
 		
 		public eWotcDB() : 
@@ -74,19 +80,27 @@ namespace MiniWOTC
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Company> Companies
+		{
+			get
+			{
+				return this.GetTable<Company>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Location> Locations
+		{
+			get
+			{
+				return this.GetTable<Location>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Employee> Employees
 		{
 			get
 			{
 				return this.GetTable<Employee>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TargetGroup> TargetGroups
-		{
-			get
-			{
-				return this.GetTable<TargetGroup>();
 			}
 		}
 		
@@ -105,6 +119,379 @@ namespace MiniWOTC
 				return this.GetTable<Document>();
 			}
 		}
+		
+		public System.Data.Linq.Table<TargetGroup> TargetGroups
+		{
+			get
+			{
+				return this.GetTable<TargetGroup>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Companies")]
+	public partial class Company : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private EntitySet<Location> _Locations;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public Company()
+		{
+			this._Locations = new EntitySet<Location>(new Action<Location>(this.attach_Locations), new Action<Location>(this.detach_Locations));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Company_Location", Storage="_Locations", ThisKey="ID", OtherKey="CompanyId")]
+		public EntitySet<Location> Locations
+		{
+			get
+			{
+				return this._Locations;
+			}
+			set
+			{
+				this._Locations.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Locations(Location entity)
+		{
+			this.SendPropertyChanging();
+			entity.Company = this;
+		}
+		
+		private void detach_Locations(Location entity)
+		{
+			this.SendPropertyChanging();
+			entity.Company = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Locations")]
+	public partial class Location : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private int _CompanyId;
+		
+		private string _Name;
+		
+		private string _Address;
+		
+		private string _City;
+		
+		private string _State;
+		
+		private EntitySet<Employee> _Employees;
+		
+		private EntityRef<Company> _Company;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnCompanyIdChanging(int value);
+    partial void OnCompanyIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    partial void OnStateChanging(string value);
+    partial void OnStateChanged();
+    #endregion
+		
+		public Location()
+		{
+			this._Employees = new EntitySet<Employee>(new Action<Employee>(this.attach_Employees), new Action<Employee>(this.detach_Employees));
+			this._Company = default(EntityRef<Company>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyId", DbType="Int NOT NULL")]
+		public int CompanyId
+		{
+			get
+			{
+				return this._CompanyId;
+			}
+			set
+			{
+				if ((this._CompanyId != value))
+				{
+					if (this._Company.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCompanyIdChanging(value);
+					this.SendPropertyChanging();
+					this._CompanyId = value;
+					this.SendPropertyChanged("CompanyId");
+					this.OnCompanyIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				if ((this._City != value))
+				{
+					this.OnCityChanging(value);
+					this.SendPropertyChanging();
+					this._City = value;
+					this.SendPropertyChanged("City");
+					this.OnCityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
+		public string State
+		{
+			get
+			{
+				return this._State;
+			}
+			set
+			{
+				if ((this._State != value))
+				{
+					this.OnStateChanging(value);
+					this.SendPropertyChanging();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Location_Employee", Storage="_Employees", ThisKey="ID", OtherKey="LocationId")]
+		public EntitySet<Employee> Employees
+		{
+			get
+			{
+				return this._Employees;
+			}
+			set
+			{
+				this._Employees.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Company_Location", Storage="_Company", ThisKey="CompanyId", OtherKey="ID", IsForeignKey=true)]
+		public Company Company
+		{
+			get
+			{
+				return this._Company.Entity;
+			}
+			set
+			{
+				Company previousValue = this._Company.Entity;
+				if (((previousValue != value) 
+							|| (this._Company.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Company.Entity = null;
+						previousValue.Locations.Remove(this);
+					}
+					this._Company.Entity = value;
+					if ((value != null))
+					{
+						value.Locations.Add(this);
+						this._CompanyId = value.ID;
+					}
+					else
+					{
+						this._CompanyId = default(int);
+					}
+					this.SendPropertyChanged("Company");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Employees(Employee entity)
+		{
+			this.SendPropertyChanging();
+			entity.Location = this;
+		}
+		
+		private void detach_Employees(Employee entity)
+		{
+			this.SendPropertyChanging();
+			entity.Location = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employees")]
@@ -113,21 +500,27 @@ namespace MiniWOTC
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _ID;
 		
-		private string _ssn;
+		private string _SSN;
 		
-		private string _name;
+		private string _Name;
 		
-		private string _address;
+		private string _Address;
 		
-		private string _state;
+		private int _LocationId;
 		
-		private System.Nullable<int> _qualified_target_groups;
+		private string _City;
 		
-		private System.Nullable<int> _certified_target_group;
+		private string _State;
+		
+		private System.Nullable<int> _QualifiedTargetGroup;
+		
+		private System.Nullable<int> _CertifiedTargetGroupId;
 		
 		private EntitySet<EmployeeDocument> _EmployeeDocuments;
+		
+		private EntityRef<Location> _Location;
 		
 		private EntityRef<TargetGroup> _TargetGroup;
 		
@@ -135,174 +528,223 @@ namespace MiniWOTC
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OnssnChanging(string value);
-    partial void OnssnChanged();
-    partial void OnnameChanging(string value);
-    partial void OnnameChanged();
-    partial void OnaddressChanging(string value);
-    partial void OnaddressChanged();
-    partial void OnstateChanging(string value);
-    partial void OnstateChanged();
-    partial void Onqualified_target_groupsChanging(System.Nullable<int> value);
-    partial void Onqualified_target_groupsChanged();
-    partial void Oncertified_target_groupChanging(System.Nullable<int> value);
-    partial void Oncertified_target_groupChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnSSNChanging(string value);
+    partial void OnSSNChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnLocationIdChanging(int value);
+    partial void OnLocationIdChanged();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    partial void OnStateChanging(string value);
+    partial void OnStateChanged();
+    partial void OnQualifiedTargetGroupChanging(System.Nullable<int> value);
+    partial void OnQualifiedTargetGroupChanged();
+    partial void OnCertifiedTargetGroupIdChanging(System.Nullable<int> value);
+    partial void OnCertifiedTargetGroupIdChanged();
     #endregion
 		
 		public Employee()
 		{
 			this._EmployeeDocuments = new EntitySet<EmployeeDocument>(new Action<EmployeeDocument>(this.attach_EmployeeDocuments), new Action<EmployeeDocument>(this.detach_EmployeeDocuments));
+			this._Location = default(EntityRef<Location>);
 			this._TargetGroup = default(EntityRef<TargetGroup>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
 		{
 			get
 			{
-				return this._id;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._ID != value))
 				{
-					this.OnidChanging(value);
+					this.OnIDChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ssn", DbType="VarChar(9)")]
-		public string ssn
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SSN", DbType="VarChar(9)")]
+		public string SSN
 		{
 			get
 			{
-				return this._ssn;
+				return this._SSN;
 			}
 			set
 			{
-				if ((this._ssn != value))
+				if ((this._SSN != value))
 				{
-					this.OnssnChanging(value);
+					this.OnSSNChanging(value);
 					this.SendPropertyChanging();
-					this._ssn = value;
-					this.SendPropertyChanged("ssn");
-					this.OnssnChanged();
+					this._SSN = value;
+					this.SendPropertyChanged("SSN");
+					this.OnSSNChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Name
 		{
 			get
 			{
-				return this._name;
+				return this._Name;
 			}
 			set
 			{
-				if ((this._name != value))
+				if ((this._Name != value))
 				{
-					this.OnnameChanging(value);
+					this.OnNameChanging(value);
 					this.SendPropertyChanging();
-					this._name = value;
-					this.SendPropertyChanged("name");
-					this.OnnameChanged();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string address
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Address
 		{
 			get
 			{
-				return this._address;
+				return this._Address;
 			}
 			set
 			{
-				if ((this._address != value))
+				if ((this._Address != value))
 				{
-					this.OnaddressChanging(value);
+					this.OnAddressChanging(value);
 					this.SendPropertyChanging();
-					this._address = value;
-					this.SendPropertyChanged("address");
-					this.OnaddressChanged();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_state", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
-		public string state
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LocationId", DbType="Int NOT NULL")]
+		public int LocationId
 		{
 			get
 			{
-				return this._state;
+				return this._LocationId;
 			}
 			set
 			{
-				if ((this._state != value))
+				if ((this._LocationId != value))
 				{
-					this.OnstateChanging(value);
+					if (this._Location.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnLocationIdChanging(value);
 					this.SendPropertyChanging();
-					this._state = value;
-					this.SendPropertyChanged("state");
-					this.OnstateChanged();
+					this._LocationId = value;
+					this.SendPropertyChanged("LocationId");
+					this.OnLocationIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_qualified_target_groups", DbType="Int")]
-		public System.Nullable<int> qualified_target_groups
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string City
 		{
 			get
 			{
-				return this._qualified_target_groups;
+				return this._City;
 			}
 			set
 			{
-				if ((this._qualified_target_groups != value))
+				if ((this._City != value))
 				{
-					this.Onqualified_target_groupsChanging(value);
+					this.OnCityChanging(value);
 					this.SendPropertyChanging();
-					this._qualified_target_groups = value;
-					this.SendPropertyChanged("qualified_target_groups");
-					this.Onqualified_target_groupsChanged();
+					this._City = value;
+					this.SendPropertyChanged("City");
+					this.OnCityChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_certified_target_group", DbType="Int")]
-		public System.Nullable<int> certified_target_group
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
+		public string State
 		{
 			get
 			{
-				return this._certified_target_group;
+				return this._State;
 			}
 			set
 			{
-				if ((this._certified_target_group != value))
+				if ((this._State != value))
+				{
+					this.OnStateChanging(value);
+					this.SendPropertyChanging();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QualifiedTargetGroup", DbType="Int")]
+		public System.Nullable<int> QualifiedTargetGroup
+		{
+			get
+			{
+				return this._QualifiedTargetGroup;
+			}
+			set
+			{
+				if ((this._QualifiedTargetGroup != value))
+				{
+					this.OnQualifiedTargetGroupChanging(value);
+					this.SendPropertyChanging();
+					this._QualifiedTargetGroup = value;
+					this.SendPropertyChanged("QualifiedTargetGroup");
+					this.OnQualifiedTargetGroupChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CertifiedTargetGroupId", DbType="Int")]
+		public System.Nullable<int> CertifiedTargetGroupId
+		{
+			get
+			{
+				return this._CertifiedTargetGroupId;
+			}
+			set
+			{
+				if ((this._CertifiedTargetGroupId != value))
 				{
 					if (this._TargetGroup.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.Oncertified_target_groupChanging(value);
+					this.OnCertifiedTargetGroupIdChanging(value);
 					this.SendPropertyChanging();
-					this._certified_target_group = value;
-					this.SendPropertyChanged("certified_target_group");
-					this.Oncertified_target_groupChanged();
+					this._CertifiedTargetGroupId = value;
+					this.SendPropertyChanged("CertifiedTargetGroupId");
+					this.OnCertifiedTargetGroupIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_EmployeeDocument", Storage="_EmployeeDocuments", ThisKey="id", OtherKey="employee_id")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_EmployeeDocument", Storage="_EmployeeDocuments", ThisKey="ID", OtherKey="EmployeeId")]
 		public EntitySet<EmployeeDocument> EmployeeDocuments
 		{
 			get
@@ -315,7 +757,41 @@ namespace MiniWOTC
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TargetGroup_Employee", Storage="_TargetGroup", ThisKey="certified_target_group", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Location_Employee", Storage="_Location", ThisKey="LocationId", OtherKey="ID", IsForeignKey=true)]
+		public Location Location
+		{
+			get
+			{
+				return this._Location.Entity;
+			}
+			set
+			{
+				Location previousValue = this._Location.Entity;
+				if (((previousValue != value) 
+							|| (this._Location.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Location.Entity = null;
+						previousValue.Employees.Remove(this);
+					}
+					this._Location.Entity = value;
+					if ((value != null))
+					{
+						value.Employees.Add(this);
+						this._LocationId = value.ID;
+					}
+					else
+					{
+						this._LocationId = default(int);
+					}
+					this.SendPropertyChanged("Location");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TargetGroup_Employee", Storage="_TargetGroup", ThisKey="CertifiedTargetGroupId", OtherKey="ID", IsForeignKey=true)]
 		public TargetGroup TargetGroup
 		{
 			get
@@ -338,11 +814,11 @@ namespace MiniWOTC
 					if ((value != null))
 					{
 						value.Employees.Add(this);
-						this._certified_target_group = value.id;
+						this._CertifiedTargetGroupId = value.ID;
 					}
 					else
 					{
-						this._certified_target_group = default(Nullable<int>);
+						this._CertifiedTargetGroupId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("TargetGroup");
 				}
@@ -382,205 +858,19 @@ namespace MiniWOTC
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TargetGroups")]
-	public partial class TargetGroup : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id;
-		
-		private string _targetGroup1;
-		
-		private int _targetGroupCode;
-		
-		private string _description;
-		
-		private string _maxCredit;
-		
-		private EntitySet<Employee> _Employees;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OntargetGroup1Changing(string value);
-    partial void OntargetGroup1Changed();
-    partial void OntargetGroupCodeChanging(int value);
-    partial void OntargetGroupCodeChanged();
-    partial void OndescriptionChanging(string value);
-    partial void OndescriptionChanged();
-    partial void OnmaxCreditChanging(string value);
-    partial void OnmaxCreditChanged();
-    #endregion
-		
-		public TargetGroup()
-		{
-			this._Employees = new EntitySet<Employee>(new Action<Employee>(this.attach_Employees), new Action<Employee>(this.detach_Employees));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
-		{
-			get
-			{
-				return this._id;
-			}
-			set
-			{
-				if ((this._id != value))
-				{
-					this.OnidChanging(value);
-					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="targetGroup", Storage="_targetGroup1", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
-		public string targetGroup1
-		{
-			get
-			{
-				return this._targetGroup1;
-			}
-			set
-			{
-				if ((this._targetGroup1 != value))
-				{
-					this.OntargetGroup1Changing(value);
-					this.SendPropertyChanging();
-					this._targetGroup1 = value;
-					this.SendPropertyChanged("targetGroup1");
-					this.OntargetGroup1Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_targetGroupCode", DbType="Int NOT NULL")]
-		public int targetGroupCode
-		{
-			get
-			{
-				return this._targetGroupCode;
-			}
-			set
-			{
-				if ((this._targetGroupCode != value))
-				{
-					this.OntargetGroupCodeChanging(value);
-					this.SendPropertyChanging();
-					this._targetGroupCode = value;
-					this.SendPropertyChanged("targetGroupCode");
-					this.OntargetGroupCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string description
-		{
-			get
-			{
-				return this._description;
-			}
-			set
-			{
-				if ((this._description != value))
-				{
-					this.OndescriptionChanging(value);
-					this.SendPropertyChanging();
-					this._description = value;
-					this.SendPropertyChanged("description");
-					this.OndescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_maxCredit", DbType="VarChar(50)")]
-		public string maxCredit
-		{
-			get
-			{
-				return this._maxCredit;
-			}
-			set
-			{
-				if ((this._maxCredit != value))
-				{
-					this.OnmaxCreditChanging(value);
-					this.SendPropertyChanging();
-					this._maxCredit = value;
-					this.SendPropertyChanged("maxCredit");
-					this.OnmaxCreditChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TargetGroup_Employee", Storage="_Employees", ThisKey="id", OtherKey="certified_target_group")]
-		public EntitySet<Employee> Employees
-		{
-			get
-			{
-				return this._Employees;
-			}
-			set
-			{
-				this._Employees.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Employees(Employee entity)
-		{
-			this.SendPropertyChanging();
-			entity.TargetGroup = this;
-		}
-		
-		private void detach_Employees(Employee entity)
-		{
-			this.SendPropertyChanging();
-			entity.TargetGroup = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EmployeeDocuments")]
 	public partial class EmployeeDocument : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _ID;
 		
-		private int _employee_id;
+		private int _EmployeeId;
 		
-		private int _document_id;
+		private int _DocumentId;
 		
-		private System.Nullable<System.DateTime> _received_date;
+		private System.Nullable<System.DateTime> _ReceivedDate;
 		
 		private EntityRef<Employee> _Employee;
 		
@@ -590,14 +880,14 @@ namespace MiniWOTC
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onemployee_idChanging(int value);
-    partial void Onemployee_idChanged();
-    partial void Ondocument_idChanging(int value);
-    partial void Ondocument_idChanged();
-    partial void Onreceived_dateChanging(System.Nullable<System.DateTime> value);
-    partial void Onreceived_dateChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnEmployeeIdChanging(int value);
+    partial void OnEmployeeIdChanged();
+    partial void OnDocumentIdChanging(int value);
+    partial void OnDocumentIdChanged();
+    partial void OnReceivedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnReceivedDateChanged();
     #endregion
 		
 		public EmployeeDocument()
@@ -607,95 +897,95 @@ namespace MiniWOTC
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
 		{
 			get
 			{
-				return this._id;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._ID != value))
 				{
-					this.OnidChanging(value);
+					this.OnIDChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_employee_id", DbType="Int NOT NULL")]
-		public int employee_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeId", DbType="Int NOT NULL")]
+		public int EmployeeId
 		{
 			get
 			{
-				return this._employee_id;
+				return this._EmployeeId;
 			}
 			set
 			{
-				if ((this._employee_id != value))
+				if ((this._EmployeeId != value))
 				{
 					if (this._Employee.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.Onemployee_idChanging(value);
+					this.OnEmployeeIdChanging(value);
 					this.SendPropertyChanging();
-					this._employee_id = value;
-					this.SendPropertyChanged("employee_id");
-					this.Onemployee_idChanged();
+					this._EmployeeId = value;
+					this.SendPropertyChanged("EmployeeId");
+					this.OnEmployeeIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_document_id", DbType="Int NOT NULL")]
-		public int document_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DocumentId", DbType="Int NOT NULL")]
+		public int DocumentId
 		{
 			get
 			{
-				return this._document_id;
+				return this._DocumentId;
 			}
 			set
 			{
-				if ((this._document_id != value))
+				if ((this._DocumentId != value))
 				{
 					if (this._Document.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.Ondocument_idChanging(value);
+					this.OnDocumentIdChanging(value);
 					this.SendPropertyChanging();
-					this._document_id = value;
-					this.SendPropertyChanged("document_id");
-					this.Ondocument_idChanged();
+					this._DocumentId = value;
+					this.SendPropertyChanged("DocumentId");
+					this.OnDocumentIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_received_date", DbType="DateTime")]
-		public System.Nullable<System.DateTime> received_date
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReceivedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ReceivedDate
 		{
 			get
 			{
-				return this._received_date;
+				return this._ReceivedDate;
 			}
 			set
 			{
-				if ((this._received_date != value))
+				if ((this._ReceivedDate != value))
 				{
-					this.Onreceived_dateChanging(value);
+					this.OnReceivedDateChanging(value);
 					this.SendPropertyChanging();
-					this._received_date = value;
-					this.SendPropertyChanged("received_date");
-					this.Onreceived_dateChanged();
+					this._ReceivedDate = value;
+					this.SendPropertyChanged("ReceivedDate");
+					this.OnReceivedDateChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_EmployeeDocument", Storage="_Employee", ThisKey="employee_id", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_EmployeeDocument", Storage="_Employee", ThisKey="EmployeeId", OtherKey="ID", IsForeignKey=true)]
 		public Employee Employee
 		{
 			get
@@ -718,18 +1008,18 @@ namespace MiniWOTC
 					if ((value != null))
 					{
 						value.EmployeeDocuments.Add(this);
-						this._employee_id = value.id;
+						this._EmployeeId = value.ID;
 					}
 					else
 					{
-						this._employee_id = default(int);
+						this._EmployeeId = default(int);
 					}
 					this.SendPropertyChanged("Employee");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Document_EmployeeDocument", Storage="_Document", ThisKey="document_id", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Document_EmployeeDocument", Storage="_Document", ThisKey="DocumentId", OtherKey="ID", IsForeignKey=true)]
 		public Document Document
 		{
 			get
@@ -752,11 +1042,11 @@ namespace MiniWOTC
 					if ((value != null))
 					{
 						value.EmployeeDocuments.Add(this);
-						this._document_id = value.id;
+						this._DocumentId = value.ID;
 					}
 					else
 					{
-						this._document_id = default(int);
+						this._DocumentId = default(int);
 					}
 					this.SendPropertyChanged("Document");
 				}
@@ -790,11 +1080,11 @@ namespace MiniWOTC
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _id;
+		private int _ID;
 		
-		private string _document1;
+		private string _Document1;
 		
-		private int _allowedDays;
+		private int _AllowedDays;
 		
 		private EntitySet<EmployeeDocument> _EmployeeDocuments;
 		
@@ -802,12 +1092,12 @@ namespace MiniWOTC
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Ondocument1Changing(string value);
-    partial void Ondocument1Changed();
-    partial void OnallowedDaysChanging(int value);
-    partial void OnallowedDaysChanged();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnDocument1Changing(string value);
+    partial void OnDocument1Changed();
+    partial void OnAllowedDaysChanging(int value);
+    partial void OnAllowedDaysChanged();
     #endregion
 		
 		public Document()
@@ -816,67 +1106,67 @@ namespace MiniWOTC
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
 		{
 			get
 			{
-				return this._id;
+				return this._ID;
 			}
 			set
 			{
-				if ((this._id != value))
+				if ((this._ID != value))
 				{
-					this.OnidChanging(value);
+					this.OnIDChanging(value);
 					this.SendPropertyChanging();
-					this._id = value;
-					this.SendPropertyChanged("id");
-					this.OnidChanged();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="document", Storage="_document1", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
-		public string document1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Document", Storage="_Document1", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string Document1
 		{
 			get
 			{
-				return this._document1;
+				return this._Document1;
 			}
 			set
 			{
-				if ((this._document1 != value))
+				if ((this._Document1 != value))
 				{
-					this.Ondocument1Changing(value);
+					this.OnDocument1Changing(value);
 					this.SendPropertyChanging();
-					this._document1 = value;
-					this.SendPropertyChanged("document1");
-					this.Ondocument1Changed();
+					this._Document1 = value;
+					this.SendPropertyChanged("Document1");
+					this.OnDocument1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_allowedDays", DbType="Int NOT NULL")]
-		public int allowedDays
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AllowedDays", DbType="Int NOT NULL")]
+		public int AllowedDays
 		{
 			get
 			{
-				return this._allowedDays;
+				return this._AllowedDays;
 			}
 			set
 			{
-				if ((this._allowedDays != value))
+				if ((this._AllowedDays != value))
 				{
-					this.OnallowedDaysChanging(value);
+					this.OnAllowedDaysChanging(value);
 					this.SendPropertyChanging();
-					this._allowedDays = value;
-					this.SendPropertyChanged("allowedDays");
-					this.OnallowedDaysChanged();
+					this._AllowedDays = value;
+					this.SendPropertyChanged("AllowedDays");
+					this.OnAllowedDaysChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Document_EmployeeDocument", Storage="_EmployeeDocuments", ThisKey="id", OtherKey="document_id")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Document_EmployeeDocument", Storage="_EmployeeDocuments", ThisKey="ID", OtherKey="DocumentId")]
 		public EntitySet<EmployeeDocument> EmployeeDocuments
 		{
 			get
@@ -919,6 +1209,192 @@ namespace MiniWOTC
 		{
 			this.SendPropertyChanging();
 			entity.Document = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TargetGroups")]
+	public partial class TargetGroup : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _TargetGroup1;
+		
+		private int _TargetGroupCode;
+		
+		private string _Description;
+		
+		private string _MaxCredit;
+		
+		private EntitySet<Employee> _Employees;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnTargetGroup1Changing(string value);
+    partial void OnTargetGroup1Changed();
+    partial void OnTargetGroupCodeChanging(int value);
+    partial void OnTargetGroupCodeChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnMaxCreditChanging(string value);
+    partial void OnMaxCreditChanged();
+    #endregion
+		
+		public TargetGroup()
+		{
+			this._Employees = new EntitySet<Employee>(new Action<Employee>(this.attach_Employees), new Action<Employee>(this.detach_Employees));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="TargetGroup", Storage="_TargetGroup1", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
+		public string TargetGroup1
+		{
+			get
+			{
+				return this._TargetGroup1;
+			}
+			set
+			{
+				if ((this._TargetGroup1 != value))
+				{
+					this.OnTargetGroup1Changing(value);
+					this.SendPropertyChanging();
+					this._TargetGroup1 = value;
+					this.SendPropertyChanged("TargetGroup1");
+					this.OnTargetGroup1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TargetGroupCode", DbType="Int NOT NULL")]
+		public int TargetGroupCode
+		{
+			get
+			{
+				return this._TargetGroupCode;
+			}
+			set
+			{
+				if ((this._TargetGroupCode != value))
+				{
+					this.OnTargetGroupCodeChanging(value);
+					this.SendPropertyChanging();
+					this._TargetGroupCode = value;
+					this.SendPropertyChanged("TargetGroupCode");
+					this.OnTargetGroupCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxCredit", DbType="VarChar(50)")]
+		public string MaxCredit
+		{
+			get
+			{
+				return this._MaxCredit;
+			}
+			set
+			{
+				if ((this._MaxCredit != value))
+				{
+					this.OnMaxCreditChanging(value);
+					this.SendPropertyChanging();
+					this._MaxCredit = value;
+					this.SendPropertyChanged("MaxCredit");
+					this.OnMaxCreditChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TargetGroup_Employee", Storage="_Employees", ThisKey="ID", OtherKey="CertifiedTargetGroupId")]
+		public EntitySet<Employee> Employees
+		{
+			get
+			{
+				return this._Employees;
+			}
+			set
+			{
+				this._Employees.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Employees(Employee entity)
+		{
+			this.SendPropertyChanging();
+			entity.TargetGroup = this;
+		}
+		
+		private void detach_Employees(Employee entity)
+		{
+			this.SendPropertyChanging();
+			entity.TargetGroup = null;
 		}
 	}
 }

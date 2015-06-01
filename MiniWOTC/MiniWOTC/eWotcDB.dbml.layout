@@ -1,50 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses1">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.5, 8.5" name="DataClasses1">
   <DataContextMoniker Name="/eWotcDB" />
   <nestedChildShapes>
-    <classShape Id="cdd9b937-5817-4741-98a6-9635e5c6a704" absoluteBounds="2.625, 1.25, 2, 2.1554996744791666">
+    <classShape Id="f447d020-5c86-474a-afb3-fcf162e6c7f1" absoluteBounds="2.875, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/eWotcDB/Company" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d02f752e-5287-40e7-99dc-68f247156b9b" absoluteBounds="2.89, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="00488bac-2a4b-4dee-9e90-ff20e29dfd1d" absoluteBounds="3.125, 2.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/eWotcDB/Location" />
+      <nestedChildShapes>
+        <elementListCompartment Id="75e61332-9deb-4ae5-973b-0894cf638c09" absoluteBounds="3.14, 2.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4 : 1.69399251302083); (4 : 2.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/eWotcDB/Company/Company_Location" />
+      <nodes>
+        <classShapeMoniker Id="f447d020-5c86-474a-afb3-fcf162e6c7f1" />
+        <classShapeMoniker Id="00488bac-2a4b-4dee-9e90-ff20e29dfd1d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b608f69c-5f5f-4a00-bcd9-453b768761f5" absoluteBounds="5.625, 2.125, 2, 2.5401025390625">
       <DataClassMoniker Name="/eWotcDB/Employee" />
       <nestedChildShapes>
-        <elementListCompartment Id="5a44425e-dbe3-418c-b29a-2473dcb983d9" absoluteBounds="2.64, 1.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="2092609d-888e-40d5-a77f-521531617f53" absoluteBounds="5.64, 2.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="b2751db4-463b-45d1-87d7-0b37e4493367" absoluteBounds="0.5, 0.875, 2, 1.7708968098958331">
-      <DataClassMoniker Name="/eWotcDB/TargetGroup" />
-      <nestedChildShapes>
-        <elementListCompartment Id="76401b5c-e9ed-495d-9000-a7cbaff8b563" absoluteBounds="0.51500000000000012, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(2.5 : 1.94794840494792); (2.625 : 1.94794840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/eWotcDB/TargetGroup/TargetGroup_Employee" />
+    <associationConnector edgePoints="[(5.125 : 3.48159912109375); (5.625 : 3.48159912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/eWotcDB/Location/Location_Employee" />
       <nodes>
-        <classShapeMoniker Id="b2751db4-463b-45d1-87d7-0b37e4493367" />
-        <classShapeMoniker Id="cdd9b937-5817-4741-98a6-9635e5c6a704" />
+        <classShapeMoniker Id="00488bac-2a4b-4dee-9e90-ff20e29dfd1d" />
+        <classShapeMoniker Id="b608f69c-5f5f-4a00-bcd9-453b768761f5" />
       </nodes>
     </associationConnector>
-    <classShape Id="0a5fae96-64de-482d-9e36-a4bec6755c7e" absoluteBounds="4.625, 0.625, 2, 1.5785953776041666">
+    <classShape Id="e70d0e14-a5a1-4a30-8aa0-57efc89159c5" absoluteBounds="5.5, 0.5, 2, 1.5785953776041666">
       <DataClassMoniker Name="/eWotcDB/EmployeeDocument" />
       <nestedChildShapes>
-        <elementListCompartment Id="7e72efef-7610-443d-9d68-d932135e60f3" absoluteBounds="4.64, 1.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="df43596b-fb3b-40e4-877a-6078c4d750f7" absoluteBounds="5.515, 0.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.625 : 2.80454802604167); (5.65625 : 2.80454802604167); (5.65625 : 2.20359537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.5625 : 2.125); (6.5625 : 2.07859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/eWotcDB/Employee/Employee_EmployeeDocument" />
       <nodes>
-        <classShapeMoniker Id="cdd9b937-5817-4741-98a6-9635e5c6a704" />
-        <classShapeMoniker Id="0a5fae96-64de-482d-9e36-a4bec6755c7e" />
+        <classShapeMoniker Id="b608f69c-5f5f-4a00-bcd9-453b768761f5" />
+        <classShapeMoniker Id="e70d0e14-a5a1-4a30-8aa0-57efc89159c5" />
       </nodes>
     </associationConnector>
-    <classShape Id="22046289-5c1d-48bd-bf41-a42ec29a69c2" absoluteBounds="7.75, 0.875, 2, 1.3862939453125">
+    <classShape Id="37778314-8c9b-4eda-bd02-48ab0cf0498e" absoluteBounds="8, 0.75, 2, 1.3862939453125">
       <DataClassMoniker Name="/eWotcDB/Document" />
       <nestedChildShapes>
-        <elementListCompartment Id="5a407906-2c0e-47e4-b7f6-d645543bf833" absoluteBounds="7.765, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e8f0f90c-9fd3-4bbd-9dfa-4da08efed101" absoluteBounds="8.015, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(7.75 : 1.53929768880208); (6.625 : 1.53929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8 : 1.41429768880208); (7.5 : 1.41429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/eWotcDB/Document/Document_EmployeeDocument" />
       <nodes>
-        <classShapeMoniker Id="22046289-5c1d-48bd-bf41-a42ec29a69c2" />
-        <classShapeMoniker Id="0a5fae96-64de-482d-9e36-a4bec6755c7e" />
+        <classShapeMoniker Id="37778314-8c9b-4eda-bd02-48ab0cf0498e" />
+        <classShapeMoniker Id="e70d0e14-a5a1-4a30-8aa0-57efc89159c5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="ccb28fb9-4b4d-4868-83e2-a395ce22112f" absoluteBounds="9.25, 3, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/eWotcDB/TargetGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d587218c-612f-44d5-960b-0d9b89af632e" absoluteBounds="9.265, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.25 : 3.83255126953125); (7.625 : 3.83255126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/eWotcDB/TargetGroup/TargetGroup_Employee" />
+      <nodes>
+        <classShapeMoniker Id="ccb28fb9-4b4d-4868-83e2-a395ce22112f" />
+        <classShapeMoniker Id="b608f69c-5f5f-4a00-bcd9-453b768761f5" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

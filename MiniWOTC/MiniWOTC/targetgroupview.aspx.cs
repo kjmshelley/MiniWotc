@@ -18,6 +18,7 @@ namespace MiniWOTC
             targetGroupsGridView.DataSource = query;
             targetGroupsGridView.DataBind();
             
+            
         }
     }
 }

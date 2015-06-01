@@ -1,26 +1,43 @@
-﻿ .leftSide {
-            background-color: #3b5f72;
-        }
+﻿html, body {
+    height: 100%;
+}
 
-        .title {
-            font-size: 30px;
-            color: #FFFFFF;
-        }
+.leftSide {
+    background-color: #3b5f72;
+}
 
-        /* if you want to display a style of li then you have to manually add a style for it*/
-        ul li {
-            list-style: none;
-        }
+.rightSide {
+}
 
-        .menuItem {
-            font-size: 20px;
-        }
+.title {
+    font-size: 30px;
+    color: #FFFFFF;
+    margin-bottom:0;
+    padding-bottom:0;
+}
 
-        .menuItem a:link,
-        .menuItem a:visited {
-            color: #FFFFFF;
-        }
+/* if you want to display a style of li then you have to manually add a style for it*/
+ul li {
+    list-style: none;
+}
 
-        .errorMissing {
-            border-color: red;
-        }
+.menuItem {
+    font-size: 20px;
+}
+
+    .menuItem a:link,
+    .menuItem a:visited {
+        color: #FFFFFF;
+    }
+
+.menu a:hover  {
+    color: #5dccaa;
+}
+
+    .menuItem .fa {
+        color: #FFFFFF;
+    }
+
+.errorMissing {
+    border-color: red;
+}
